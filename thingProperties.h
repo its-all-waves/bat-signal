@@ -1,16 +1,16 @@
-#include "WiFiConnectionHandler.h"
-#include "ArduinoIoTCloudTCP.h"
 #include <ArduinoIoTCloud.h>
+#include "ArduinoIoTCloudTCP.h"
 #include <Arduino_ConnectionHandler.h>
+#include "WiFiConnectionHandler.h"
 #include "secrets.h"
 
 void initBatSignalStateInCloud();
 void onToggleBatSignal();
-boolean bat_signal_on;
+bool bat_signal;
 
 void initThingProperties() {
     #if defined(HAS_TCP)
-        ArduinoCloud.addProperty(bat_signal_on, Permission::Write).onUpdate(onToggleBatSignal);
+        ArduinoCloud.addProperty(bat_signal, Permission::Write).onUpdate(onToggleBatSignal);
 
     #if !defined(BOARD_HAS_SECURE_ELEMENT)
         ArduinoCloud.setBoardId(DEVICE_ID);
