@@ -12,14 +12,14 @@ void onToggleBatSignal();
 bool bat_signal;
 
 void initThingProperties() {
-    ArduinoCloud.setBoardId(DEVICE_ID);
-    ArduinoCloud.setSecretDeviceKey(DEVICE_SECRET_KEY);
+  ArduinoCloud.setBoardId(DEVICE_ID);
+  ArduinoCloud.setSecretDeviceKey(DEVICE_SECRET_KEY);
 
-    ArduinoCloud.addProperty(bat_signal, Permission::Write).onUpdate(onToggleBatSignal);
+  ArduinoCloud.addProperty(bat_signal, Permission::Write).onUpdate(onToggleBatSignal);
 
-    ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, onCloudConnect);
-    ArduinoCloud.addCallback(ArduinoIoTCloudEvent::SYNC, onCloudSync);
-    ArduinoCloud.addCallback(ArduinoIoTCloudEvent::DISCONNECT, onCloudDisconnect);
+  ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, onCloudConnect);
+  ArduinoCloud.addCallback(ArduinoIoTCloudEvent::SYNC, onCloudSync);
+  ArduinoCloud.addCallback(ArduinoIoTCloudEvent::DISCONNECT, onCloudDisconnect);
 }
 
 WiFiConnectionHandler ArduinoIoTPreferredConnection(WIFI_SSID, WIFI_PW);

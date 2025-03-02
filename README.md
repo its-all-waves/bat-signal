@@ -28,7 +28,7 @@ We want to check if the IDE is properly configured to compile to the assembly la
 - ![[arduino-button-upload.png]]
 - If successful, the built-in LED should toggle on and off every second.
 
-## Setup the Arduino cloud lib
+## Setup the ArduinoIoTCloud Lib
 
 - Follow these [instructions](https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-installing-a-library/) to install the "ArduinoIoTCloud" lib using the library manager. Be sure to install all dependencies when prompted.
 - Find the most example on Github

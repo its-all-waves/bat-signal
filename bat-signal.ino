@@ -25,57 +25,57 @@ void initBatSignalStateInCloud();
 
 /* Runs once at boot. */
 void setup() {
-    Serial.begin(9600);
-    delay(1500); // wait for a Serial Monitor w/o blocking if not found
+  Serial.begin(9600);
+  delay(1500);  // wait for a Serial Monitor w/o blocking if not found
 
-    configAndInitPins();
-    setDebugMessageLevel(DBG_INFO);
+  configAndInitPins();
+  setDebugMessageLevel(DBG_INFO);
 
-    initThingProperties();
-    ArduinoCloud.begin(ArduinoIoTPreferredConnection);
-    ArduinoCloud.printDebugInfo();
+  initThingProperties();
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+  ArduinoCloud.printDebugInfo();
 }
 
 /* Runs forever after `setup()`. */
 void loop() {
-    ArduinoCloud.update();
+  ArduinoCloud.update();
 }
 
 void configAndInitPins() {
-    pinMode(WARNING_LED_PIN, OUTPUT);
-    pinMode(SUCCESS_LED_PIN, OUTPUT);
-    pinMode(BAT_SIGNAL_PIN, OUTPUT);
-    pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(WARNING_LED_PIN, OUTPUT);
+  pinMode(SUCCESS_LED_PIN, OUTPUT);
+  pinMode(BAT_SIGNAL_PIN, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 
-    digitalWrite(WARNING_LED_PIN, HIGH);
-    digitalWrite(SUCCESS_LED_PIN, LOW);
+  digitalWrite(WARNING_LED_PIN, HIGH);
+  digitalWrite(SUCCESS_LED_PIN, LOW);
 
-    // toggle the built-in led along with the bat signal, for debugging
-    // relay turns on via HIGH voltage, LED turns on via LOW
-    digitalWrite(LED_BUILTIN, !INITIAL_BAT_SIGNAL_STATE);
-    digitalWrite(BAT_SIGNAL_PIN, INITIAL_BAT_SIGNAL_STATE);
+  // toggle the built-in led along with the bat signal, for debugging
+  // relay turns on via HIGH voltage, LED turns on via LOW
+  digitalWrite(LED_BUILTIN, !INITIAL_BAT_SIGNAL_STATE);
+  digitalWrite(BAT_SIGNAL_PIN, INITIAL_BAT_SIGNAL_STATE);
 }
 
 void onCloudConnect() {
-    Serial.println("CLOUD CONNECTED");
-    digitalWrite(WARNING_LED_PIN, LOW);
-    digitalWrite(SUCCESS_LED_PIN, HIGH);
+  Serial.println("CLOUD CONNECTED");
+  digitalWrite(WARNING_LED_PIN, LOW);
+  digitalWrite(SUCCESS_LED_PIN, HIGH);
 }
 
 void onCloudSync() {
-    Serial.println("CLOUD SYNCED");
+  Serial.println("CLOUD SYNCED");
 }
 
 void onCloudDisconnect() {
-    Serial.println("CLOUD DISCONNECTED");
-    digitalWrite(SUCCESS_LED_PIN, LOW);
-    digitalWrite(WARNING_LED_PIN, HIGH);
+  Serial.println("CLOUD DISCONNECTED");
+  digitalWrite(SUCCESS_LED_PIN, LOW);
+  digitalWrite(WARNING_LED_PIN, HIGH);
 }
 
 /* Responds to Arduino Cloud dashboard toggle switch. */
 void onToggleBatSignal() {
-    Serial.print("BAT SIGNAL ");
-    Serial.println(bat_signal ? "ON" : "OFF");
-    digitalWrite(BAT_SIGNAL_PIN, bat_signal);
-    digitalWrite(LED_BUILTIN, !bat_signal);
+  Serial.print("BAT SIGNAL ");
+  Serial.println(bat_signal ? "ON" : "OFF");
+  digitalWrite(BAT_SIGNAL_PIN, bat_signal);
+  digitalWrite(LED_BUILTIN, !bat_signal);
 }
