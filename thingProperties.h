@@ -4,19 +4,22 @@
 #include "WiFiConnectionHandler.h"
 #include "secrets.h"
 
-void initBatSignalStateInCloud();
+void onCloudConnect();
+void onCloudSync();
+void onCloudDisconnect();
 void onToggleBatSignal();
+
 bool bat_signal;
 
 void initThingProperties() {
-    #if defined(HAS_TCP)
-        ArduinoCloud.addProperty(bat_signal, Permission::Write).onUpdate(onToggleBatSignal);
+    ArduinoCloud.setBoardId(DEVICE_ID);
+    ArduinoCloud.setSecretDeviceKey(DEVICE_SECRET_KEY);
 
-    #if !defined(BOARD_HAS_SECURE_ELEMENT)
-        ArduinoCloud.setBoardId(DEVICE_ID);
-        ArduinoCloud.setSecretDeviceKey(DEVICE_SECRET_KEY);
-    #endif // BOARD_HAS_SECURE_ELEMENT
-    #endif // HAS_TCP
+    ArduinoCloud.addProperty(bat_signal, Permission::Write).onUpdate(onToggleBatSignal);
+
+    ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, onCloudConnect);
+    ArduinoCloud.addCallback(ArduinoIoTCloudEvent::SYNC, onCloudSync);
+    ArduinoCloud.addCallback(ArduinoIoTCloudEvent::DISCONNECT, onCloudDisconnect);
 }
 
 WiFiConnectionHandler ArduinoIoTPreferredConnection(WIFI_SSID, WIFI_PW);
