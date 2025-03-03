@@ -15,7 +15,8 @@ void initThingProperties() {
   ArduinoCloud.setBoardId(DEVICE_ID);
   ArduinoCloud.setSecretDeviceKey(DEVICE_SECRET_KEY);
 
-  ArduinoCloud.addProperty(bat_signal, Permission::Write).onUpdate(onToggleBatSignal);
+  // allow this Thing to read and write updates to the `bat_signal` bool in the Cloud
+  ArduinoCloud.addProperty(bat_signal, Permission::ReadWrite).onUpdate(onToggleBatSignal);
 
   ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, onCloudConnect);
   ArduinoCloud.addCallback(ArduinoIoTCloudEvent::SYNC, onCloudSync);
