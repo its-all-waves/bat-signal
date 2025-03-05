@@ -21,6 +21,7 @@ TODO:
 #define BAT_SIGNAL_OFF LOW
 #define BAT_SIGNAL_INITIAL_STATE BAT_SIGNAL_OFF
 #define BAT_SIGNAL_ON_TIME_MS 2000
+#define BAT_SIGNAL_MIRROR_LED_PIN D7
 
 // FUNCTION PROTOTYPES
 void configAndInitPins();
@@ -49,12 +50,14 @@ void configAndInitPins() {
   pinMode(CONNECTED_TO_CLOUD_LED_PIN, OUTPUT);
   pinMode(BAT_SIGNAL_PIN, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(BAT_SIGNAL_MIRROR_LED_PIN, OUTPUT);
 
   // set initial pin states
   digitalWrite(AWAITING_CLOUD_CONNECT_LED_PIN, HIGH);  // intially awaiting connection
   digitalWrite(CONNECTED_TO_CLOUD_LED_PIN, LOW);
   digitalWrite(LED_BUILTIN, !BAT_SIGNAL_INITIAL_STATE);    // toggle the built-in led along with the bat signal, for debugging
   digitalWrite(BAT_SIGNAL_PIN, BAT_SIGNAL_INITIAL_STATE);  // relay on = HIGH voltage, built-in LED on = LOW
+  digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, LOW);
 }
 
 // CLOUD EVENT HANDLERS
@@ -79,6 +82,7 @@ void turnOnBatSignal() {
   bat_signal = true;
   digitalWrite(BAT_SIGNAL_PIN, BAT_SIGNAL_ON);
   digitalWrite(LED_BUILTIN, BUILTIN_LED_ON);
+  digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, HIGH);
 }
 
 void turnOffBatSignal() {
@@ -86,6 +90,7 @@ void turnOffBatSignal() {
   bat_signal = false;  // cloud lib handles syncing this with the cloud
   digitalWrite(BAT_SIGNAL_PIN, !BAT_SIGNAL_ON);
   digitalWrite(LED_BUILTIN, !BUILTIN_LED_ON);
+  digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, LOW);
 }
 
 /* Responds to Arduino Cloud dashboard toggle switch. */
