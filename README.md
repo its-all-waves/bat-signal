@@ -2,9 +2,15 @@
 1. [CREATE ACCOUNT](https://login.arduino.cc/login?state=hKFo2SBTRG5CSXJOM2VPTDdjLWxTNTg4VVJGamw5MEp0QXNXV6FupWxvZ2luo3RpZNkgUWlXR29qWGN1V1d5MFZrRm9zM2ZyMWdMM09ZVnNJeUOjY2lk2SBkdHFwT1VlMDVxckx2YkdST0lXWWkyeG80M1ZQMFVyMw&client=dtqpOUe05qrLvbGROIWYi2xo43VP0Ur3&protocol=oauth2&authorizeTimeoutInSeconds=5&redirect_uri=https%3A%2F%2Fid.arduino.cc&scope=openid+profile+email&response_type=code&response_mode=query&nonce=WHhyU01IX1B5b2FEWndYb0cya3FqZUZWSkVUaHF0dlR2OEpIVjVETjJ1Vg%3D%3D&code_challenge=1RLR5WQYHOI3w_bo5ntv-eXzjcTkUcG31N1BDX3hS3c&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtc3BhLWpzIiwidmVyc2lvbiI6IjEuMTIuMSJ9#/sso/login)
 2. [ARDUINO ESP32 DOCS](https://docs.arduino.cc/arduino-cloud/guides/esp32/)
 3. TOP RIGHT BROWSER:
-	1. Go to Arduino Cloud -> ![Pasted image 20250307183536](https://github.com/user-attachments/assets/fd8fd4f4-6fad-47a0-a4a9-e253cb0cd2e3)
+	1. Go to Arduino Cloud -> 
+
+![Pasted image 20250307183536](https://github.com/user-attachments/assets/fd8fd4f4-6fad-47a0-a4a9-e253cb0cd2e3)
+
 4. -> DEVICES ON LEFT NAV BAR
-5. -> CLICK ![Pasted image 20250307183801](https://github.com/user-attachments/assets/a7b1004f-47f2-462e-9d48-c48f775d7519)
+5. -> CLICK 
+
+![Pasted image 20250307183801](https://github.com/user-attachments/assets/a7b1004f-47f2-462e-9d48-c48f775d7519)
+
 6. -> SELECT THIRD PARTY DEVICE
 7. -> SETUP DEVICE MODAL
 	1. ESP8266 SELECT
