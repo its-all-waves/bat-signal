@@ -1,5 +1,5 @@
 1. [NOTES.md](./docs/NOTES.md)
-2. TROUBLESHOOTING    ....https://github.com/frontEndParty/dingdong-backend/tree/main/docs
+2. [TROUBLESHOOTING.md](./docs/TROUBLESHOOTING.md)
 
 ## Start
 1. [CREATE ACCOUNT](https://login.arduino.cc/login?state=hKFo2SBTRG5CSXJOM2VPTDdjLWxTNTg4VVJGamw5MEp0QXNXV6FupWxvZ2luo3RpZNkgUWlXR29qWGN1V1d5MFZrRm9zM2ZyMWdMM09ZVnNJeUOjY2lk2SBkdHFwT1VlMDVxckx2YkdST0lXWWkyeG80M1ZQMFVyMw&client=dtqpOUe05qrLvbGROIWYi2xo43VP0Ur3&protocol=oauth2&authorizeTimeoutInSeconds=5&redirect_uri=https%3A%2F%2Fid.arduino.cc&scope=openid+profile+email&response_type=code&response_mode=query&nonce=WHhyU01IX1B5b2FEWndYb0cya3FqZUZWSkVUaHF0dlR2OEpIVjVETjJ1Vg%3D%3D&code_challenge=1RLR5WQYHOI3w_bo5ntv-eXzjcTkUcG31N1BDX3hS3c&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtc3BhLWpzIiwidmVyc2lvbiI6IjEuMTIuMSJ9#/sso/login)
