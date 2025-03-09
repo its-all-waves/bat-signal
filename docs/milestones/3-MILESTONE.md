@@ -25,9 +25,10 @@ HARDWARE SPECS:
 
 	<img title="3.1" alt="LED pins" src="../../.images/3.1.jpeg" width="400">
 
-	1. *CONNECT POWER AND RESISTOR TO LED*
-   	- the LED cannot regulate current on its own, so we use a resistor to lower the current
-   	- without the resistor, the high current would destroy the LED
+2. *CONNECT POWER AND RESISTOR TO LED*
+     - the LED cannot regulate current on its own, so we use a resistor to lower the current
+   - without the resistor, the high current would destroy the LED
+
 	<ol type="a">
 	<li>place a resistor pin in the same terminal strip that the LED pin is in, and connect the other resistor pin in a different terminal strip. (in the picture, we use the strip directly across the dip)</li>
 	<li>use connecting wire to connect strip one of the MCU board's data pins (in the picture, we use d7) </li>

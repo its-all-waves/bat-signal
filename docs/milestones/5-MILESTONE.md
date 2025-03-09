@@ -29,9 +29,9 @@ HARDWARE SPECS:
 
 
 
-4. *PLUG THE LAMP INTO POWER*\
-*confirm the lamp powers on when relay powers on*
-*check the power switch for the lamp is turned on*
+4. *PLUG THE LAMP INTO POWER*
+    - confirm the lamp powers on when relay powers on
+    - if not working, check the power switch for the lamp is turned on
 
 <br>
 
