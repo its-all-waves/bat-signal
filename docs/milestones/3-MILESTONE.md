@@ -2,16 +2,17 @@
 [PREV MILESTONE](./2-MILESTONE.md)
 
 ## MILESTONE THREE
-**GOAL: TRIGGER AN LED LIGHT ON/OFF VIA THE CLOUD DASHBOARD**
+**GOAL: TOGGLE AN LED LIGHT VIA THE CLOUD DASHBOARD**
 
 HARDWARE SPECS:
-	- 1 LED
-	- 1 RESISTOR - VALUE: 200 - 300 ohms
-	- 2 CONNECTING WIRE
+- 1 LED
+- 1 RESISTOR - VALUE: 200 - 300 ohms
+- 2 CONNECTING WIRE
   
+<br>
 
-  <img title="3.2" alt="Attach LED and resistor to breadboard" src="../../.images/3.2.jpeg" width="400">
-	
+<img title="3.2" alt="Attach LED and resistor to breadboard" src="../../.images/3.2.jpeg" width="400">
+
 1. *CONNECT LED TO GROUND*
      - the led is polarized so current can only flow in one direction (a "diode")
      - if you have led backwards it will not work
@@ -24,7 +25,7 @@ HARDWARE SPECS:
 
 	<img title="3.1" alt="LED pins" src="../../.images/3.1.jpeg" width="400">
 
-	2. *CONNECT POWER AND RESISTOR TO LED*
+	1. *CONNECT POWER AND RESISTOR TO LED*
    	- the LED cannot regulate current on its own, so we use a resistor to lower the current
    	- without the resistor, the high current would destroy the LED
 	<ol type="a">
