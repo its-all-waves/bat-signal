@@ -14,8 +14,8 @@ HARDWARE SPECS:
 <img title="3.2" alt="Attach LED and resistor to breadboard" src="../../.images/3.2.jpeg" width="400">
 
 1. *CONNECT LED TO GROUND*
-     - the led is polarized so current can only flow in one direction (a "diode")
-     - if you have led backwards it will not work
+     - the LED is polarized so current can only flow in one direction (a "diode")
+     - if you have LED backwards it will not work
   
 	<ol type="a">
 	<li>connect LED's long side to a terminal strip</li>
