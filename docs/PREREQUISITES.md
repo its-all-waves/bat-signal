@@ -1,9 +1,17 @@
+## Concepts & Glossary
 - Digital information is just 0 and 1 -- on / off, true / false, HIGH / LOW
-    - HIGH / LOW - put simply, on / off. Is there a voltage or not (kinda)?
+    - HIGH / LOW - put simply, on / off. Is there a voltage or not.
 - Voltage is provided by a source. Current is demanded by the load.
-- LEDs and push buttons MUST be used with a resistor in series, else you're shorting the voltage / power supply to ground. For LEDs, the amount of resistance chosen determines the current (and power) that passes thru the LED. For push buttons, we would ideally have zero current, as we just need to detect a change in voltage.
-- Arduino / C++
+- LEDs and push buttons MUST be used with a resistor in series, else you're shorting the voltage / power supply to ground. 
+    - For LEDs, the amount of resistance chosen determines the current (and power) that passes thru the LED.
+    - For push buttons, we would ideally have zero current, as we just need to detect a change in voltage.
+- Arduino is (basically) C++
+- _If you just go connecting random things you are going to blow up your kit!_ :(
+- Make sure +/- on power supply aligns with +/- on bread board
+- + is RED
+- - is BLUE
 
+## Cheatsheet
 ```cpp
 //============== PREPROCESSOR MACROS ==============
 #include "OtherFile.h"     // Include local header file
@@ -53,6 +61,5 @@ attachInterrupt(
 // Helper function to convert pin number to interrupt number
 uint8_t digitalPinToInterrupt(uint8_t pin);
 ```
-
 ## Usable Pins on the MCU Board
 [NodeMCU 1.0 usable pins](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/#table)
