@@ -1,4 +1,4 @@
-1. [NOTES.md](./tree/main/docs/NOTES.md)
+1. [NOTES.md](./docs/NOTES.md)
 2. TROUBLESHOOTING    ....https://github.com/frontEndParty/dingdong-backend/tree/main/docs
 
 ## Start
