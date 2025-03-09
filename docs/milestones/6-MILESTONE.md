@@ -1,4 +1,7 @@
 
+[<-------------](./5-MILESTONE.md)
+[PREV MILESTONE](./5-MILESTONE.md)
+
 ## MILESTONE FIVE
 **GOAL: PARTY**
 
@@ -11,6 +14,3 @@ Now you get to add some extra functionality to your board. This step is open end
 
 
  Have fun!
-
-(<-------------)[[./5-MILESTONE.md]]
-(PREV MILESTONE)[./5-MILESTONE.md]

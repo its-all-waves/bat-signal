@@ -1,3 +1,5 @@
+[<-------------](./2-MILESTONE.md)
+[PREV MILESTONE](./2-MILESTONE.md)
 
 ## MILESTONE THREE
 **GOAL: TRIGGER AN LED LIGHT ON/OFF VIA THE CLOUD DASHBOARD**
@@ -16,9 +18,7 @@ HARDWARE SPECS:
 	- `USE EVENT LISTENER TO LISTEN TO EVENTS FROM CLOUD AND RESPOND TO THEM`
 		- (IF `isOn` (your `bool` variable) is TRUE turn on LED, ELSE turn off)
 
+<br>
 
-(<-------------)[[./2-MILESTONE.md]]
-(PREV MILESTONE)[./2-MILESTONE.md]
-
-(NEXT MILESTONE)[./4-MILESTONE.md]
-(------------->)[./4-MILESTONE.md]
+[NEXT MILESTONE](./4-MILESTONE.md)
+[------------->](./4-MILESTONE.md)

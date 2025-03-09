@@ -7,11 +7,11 @@
 ## Table of Contents:
 * [PREREQUISITES](./docs/PREREQUISITES.md) - Terms and concepts we'll be using
 
-*  [Milestone 1](./docs/milestones/1.md) - Setup a 'Hello world' with your MCU board
-*  [Milestone 2](./docs/milestones/2.md) - Create a virtual button that controls a variable
-*  [Milestone 3](./docs/milestones/3.md) - Use the virtual button to toggle an LED
-*  [Milestone 4](./docs/milestones/4.md) - Add a relay to your circuit
-*  [Milestone 5](./docs/milestones/5.md) - Add a light source to your circuit
-*  [Milestone 6](./docs/milestones/6.md) - Add whatever you want
+*  [Milestone 1](./docs/milestones/1-MILESTONE.md) - Setup a 'Hello world' with your MCU board
+*  [Milestone 2](./docs/milestones/2-MILESTONE.md) - Create a virtual button that controls a variable
+*  [Milestone 3](./docs/milestones/3-MILESTONE.md) - Use the virtual button to toggle an LED
+*  [Milestone 4](./docs/milestones/4-MILESTONE.md) - Add a relay to your circuit
+*  [Milestone 5](./docs/milestones/5-MILESTONE.md) - Add a light source to your circuit
+*  [Milestone 6](./docs/milestones/6-MILESTONE.md) - Add whatever you want
 
 * [TROUBLESHOOTING](./docs/TROUBLESHOOTING.md)

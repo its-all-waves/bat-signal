@@ -73,6 +73,7 @@
 1. BACK TO "THING"
 2. **CODE**
 
+<br>
 
-(NEXT MILESTONE)[./2-MILESTONE.md]
-(------------->)[./2-MILESTONE.md]
+[NEXT MILESTONE](./2-MILESTONE.md)\
+[------------->](./2-MILESTONE.md)

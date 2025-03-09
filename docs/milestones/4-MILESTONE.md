@@ -1,3 +1,5 @@
+[<-------------](./3-MILESTONE.md)
+[PREV MILESTONE](./3-MILESTONE.md)
 
 ## MILESTONE FOUR
 **GOAL: ADD A RELAY AND ITS POWER SUPPLY**
@@ -17,8 +19,7 @@
 4. `CODE`
     1. TODO: `EDIT EVENT HANDLER TO TRIGGER THE RELAY`
 
-(<-------------)[[./3-MILESTONE.md]]
-(PREV MILESTONE)[./3-MILESTONE.md]
+<br>
 
-(NEXT MILESTONE)[./6-MILESTONE.md]
-(------------->)[./6-MILESTONE.md]
+[NEXT MILESTONE](./6-MILESTONE.md)
+[------------->](./6-MILESTONE.md)

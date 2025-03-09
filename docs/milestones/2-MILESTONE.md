@@ -1,4 +1,7 @@
 
+[<-------------](./1-MILESTONE.md)\
+[PREV MILESTONE](./1-MILESTONE.md)
+
 ## MILESTONE TWO
 **GOAL: CREATE A CLOUD DASHBOARD GUI, ADD BUTTON, ADD BOOL VARIABLE** 
 
@@ -15,9 +18,7 @@
 	- -> SELECT IT (`isOn`)
 	- -> CLICK "DONE"
 
+<br>
 
-(<-------------)[[./1-MILESTONE.md]]
-(PREV MILESTONE)[./1-MILESTONE.md]
-
-(NEXT MILESTONE)[./3-MILESTONE.md]
-(------------->)[./3-MILESTONE.md]
+[NEXT MILESTONE](./3-MILESTONE.md)\
+[------------->](./3-MILESTONE.md)
