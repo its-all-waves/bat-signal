@@ -1,5 +1,4 @@
 
-[<-------------](./5-MILESTONE.md)
 [PREV MILESTONE](./5-MILESTONE.md)
 
 ## MILESTONE FIVE

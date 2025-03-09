@@ -76,4 +76,3 @@
 <br>
 
 [NEXT MILESTONE](./2-MILESTONE.md)\
-[------------->](./2-MILESTONE.md)

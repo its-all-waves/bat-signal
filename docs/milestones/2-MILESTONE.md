@@ -1,5 +1,4 @@
 
-[<-------------](./1-MILESTONE.md)\
 [PREV MILESTONE](./1-MILESTONE.md)
 
 ## MILESTONE TWO
@@ -21,4 +20,3 @@
 <br>
 
 [NEXT MILESTONE](./3-MILESTONE.md)\
-[------------->](./3-MILESTONE.md)

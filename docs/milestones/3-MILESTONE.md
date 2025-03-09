@@ -1,4 +1,4 @@
-[<-------------](./2-MILESTONE.md)
+
 [PREV MILESTONE](./2-MILESTONE.md)
 
 ## MILESTONE THREE
@@ -21,4 +21,3 @@ HARDWARE SPECS:
 <br>
 
 [NEXT MILESTONE](./4-MILESTONE.md)
-[------------->](./4-MILESTONE.md)
