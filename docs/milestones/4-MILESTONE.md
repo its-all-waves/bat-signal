@@ -3,21 +3,46 @@
 
 ## MILESTONE FOUR
 **GOAL: ADD A RELAY AND ITS POWER SUPPLY**
-
- > (SHOW DIAGRAM)
-1. _CONNECT WIRES_:
-	1. BREADBOARD-RAIL-GROUND GOES TO RELAY-GROUND
-	2. BREADBOARD-POSITIVE GOES TO RELAY-VCC
-	3. DATA PIN GOES INTO RELAY "IN" CONNECTION
-	    1. OUR DATA PIN IS `D6` (`D6` CONTROLS THE RELAY)
 **CONNECTION IS NOW ESTABLISHED (RELAY IS CONNECTED TO THE BOARD)**
-2. *GRAB A 9V BATTERY AND ATTACH IT TO THE BATTERY ADAPTER*
-    1. PLUG IT INTO THE POWER SUPPLY
-    2. (double check +/- going into relay correctly)
-3. *TURN ON THE POWER SUPPLY WITH PHYSICAL BUTTON ON IT*
-	1. (CONFIRM YOU HEAR A CLICKING SOUND)
-4. `CODE`
-    1. TODO: `EDIT EVENT HANDLER TO TRIGGER THE RELAY`
+
+
+HARDWARE SPECS:
+	- 1 POWER SUPPLY
+	- 1 RELAY
+	- 3 CONNECTING WIRES
+	- BATTERY ADAPTER
+
+
+1. *ATTACH POWER SUPPLY*
+
+    <img title="4.1" alt="Attach power supply" src="../../.images/4.1.jpeg" width="400">
+
+<br>
+
+2. *CONNECT WIRES*
+	<ol type="a">
+	<li>connect breadboard-rail-ground to relay-grn</li>
+	<li>connect breadboard-positive to relay-vcc</li>
+	<li>connect data pin (d6) goes into relay-in</li>
+	</ol>
+
+    <img title="4.2" alt="Connect relay to board" src="../../.images/4.2.jpeg" width="400">
+
+<br>
+
+3. *CONNECT 9V BATTERY TO THE POWER SUPPLY*
+	<ol type="a">
+	<li>connect the battery to the battery adapter</li>
+	<li>use the battery adapter to make the connection between the power supply and the battery</li>
+	<li>(double check +/- going into relay correctly)</li>
+	<li>turn on the power supply with the physical button located on the power supply</li>
+	<li>confirm you hear a clicking sound</li>
+	</ol>
+
+<br>
+
+4. `CODE`\
+  - TODO: `EDIT EVENT HANDLER TO TRIGGER THE RELAY`
 
 <br>
 

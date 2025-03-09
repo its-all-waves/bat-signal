@@ -7,12 +7,33 @@
 HARDWARE SPECS:
 	- 1 LED
 	- 1 RESISTOR - VALUE: 200 - 300 ohms
-1. *FROM PIN WHERE CONNECTING LED*...
-	1. RESISTOR AND LED IN SERIES GO INTO GROUND
-		- (THE LED IS POLARIZED SO CURRENT CAN ONLY FLOW IN ONE DIRECTION) (a "DIODE")
-		- (IF YOU HAVE LED BACKWARDS IT WILL NOT WORK)
-		- (LONG SIDE PIN IS POSITIVE VOLTAGE SIDE)
-		- (SHORT SIDE WILL GO TO GROUND)
+	- 2 CONNECTING WIRE
+  
+
+  <img title="3.2" alt="Attach LED and resistor to breadboard" src="../../.images/3.2.jpeg" width="400">
+	
+1. *CONNECT LED TO GROUND*
+     - the led is polarized so current can only flow in one direction (a "diode")
+     - if you have led backwards it will not work
+  
+	<ol type="a">
+	<li>connect LED's long side to a terminal strip</li>
+	<li>connect LED's short side to ground power rail</li>
+	<li>use connecting wire to connect ground power rail to ground pin on MCU board </li>
+	</ol>
+
+	<img title="3.1" alt="LED pins" src="../../.images/3.1.jpeg" width="400">
+
+	2. *CONNECT POWER AND RESISTOR TO LED*
+   	- the LED cannot regulate current on its own, so we use a resistor to lower the current
+   	- without the resistor, the high current would destroy the LED
+	<ol type="a">
+	<li>place a resistor pin in the same terminal strip that the LED pin is in, and connect the other resistor pin in a different terminal strip. (in the picture, we use the strip directly across the dip)</li>
+	<li>use connecting wire to connect strip one of the MCU board's data pins (in the picture, we use d7) </li>
+	</ol>
+
+<br>
+
 - **CODE**
 	- TODO: `SET THE MODE OF The PIN WE ARE USING IN THE SETUP FUNCTION`
 	- `USE EVENT LISTENER TO LISTEN TO EVENTS FROM CLOUD AND RESPOND TO THEM`
