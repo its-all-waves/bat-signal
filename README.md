@@ -131,6 +131,13 @@
 	2. ONE INTO "COMMON"
 **PLUG THE LAMP INTO POWER**
 4. *CONFIRM THE LAMP POWERS ON WHEN RELAY POWERS ON*
+
+## MILESTONE FIVE:
+- Create a User Interface
+	- use leds to indicate status
+	- use a button to reset the board
+	- use a button to send feedback to the dingDong user
+
 ## Physical Tofu **Space**
 1.
 
