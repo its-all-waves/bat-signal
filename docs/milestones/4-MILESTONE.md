@@ -12,13 +12,13 @@ HARDWARE SPECS:
 
 <br>
 
-1. *ATTACH POWER SUPPLY*
+- *ATTACH POWER SUPPLY*
 
     <img title="4.1" alt="Attach power supply" src="../../.images/4.1.jpeg" width="400">
 
 <br>
 
-2. *CONNECT WIRES*
+- *CONNECT WIRES*
 	<ol type="a">
 	<li>connect breadboard-rail-ground to relay-grn</li>
 	<li>connect breadboard-positive to relay-vcc</li>
@@ -29,7 +29,7 @@ HARDWARE SPECS:
 
 <br>
 
-3. *CONNECT 9V BATTERY TO THE POWER SUPPLY*
+- *CONNECT 9V BATTERY TO THE POWER SUPPLY*
 	<ol type="a">
 	<li>connect the battery to the battery adapter</li>
 	<li>use the battery adapter to make the connection between the power supply and the battery</li>
@@ -40,7 +40,7 @@ HARDWARE SPECS:
 
 <br>
 
-4. `CODE`\
+- `CODE`\
   - TODO: `EDIT EVENT HANDLER TO TRIGGER THE RELAY`
 
 <br>
