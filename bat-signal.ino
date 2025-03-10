@@ -16,7 +16,6 @@ TODO:
 #define CONNECTED_TO_CLOUD_LED_PIN D2
 #define LED_BUILTIN_ON LOW
 #define BAT_SIGNAL_PIN D6
-#define BAT_SIGNAL_INITIAL_STATE LOW
 #define BAT_SIGNAL_ON_TIME_MS 2000
 #define BAT_SIGNAL_MIRROR_LED_PIN D7
 #define IM_COMING_BUTTON_PIN D4
@@ -57,12 +56,8 @@ void configAndInitPins() {
 
   attachInterrupt(digitalPinToInterrupt(IM_COMING_BUTTON_PIN), imComing, FALLING);
 
-  // set initial pin states
+  // set initial pin state
   digitalWrite(AWAITING_CLOUD_CONNECT_LED_PIN, HIGH);  // intially awaiting connection
-  // digitalWrite(CONNECTED_TO_CLOUD_LED_PIN, LOW);
-  // digitalWrite(LED_BUILTIN, !LED_BUILTIN_ON);              // toggle the built-in led along with the bat signal, for debugging
-  // digitalWrite(BAT_SIGNAL_PIN, BAT_SIGNAL_INITIAL_STATE);  // relay on = HIGH voltage, built-in LED on = LOW
-  // digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, LOW);
 }
 
 // INTERRUPT SERVICE ROUTINE (ISR)
