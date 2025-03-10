@@ -6,24 +6,21 @@ TODO:
         - [x] YELLOW for awaiting connection
         - [x] GREEN indicating connection established
     - [x] External reset button
-    - [ ] External bat_signal_on = false button (flip bat signal pin V)
-    - [ ] External LED to mirror bat_signal_on to indicate change when no lamp connected
+    - [x] External LED to mirror bat_signal_on (allows device user to see if cloud connection OK without lamp attached) 
 */
 
 #include "thingProperties.h"
 
-// COMPILER MACROS
+// PREPROCESSOR MACROS
 #define AWAITING_CLOUD_CONNECT_LED_PIN D1
 #define CONNECTED_TO_CLOUD_LED_PIN D2
-#define BUILTIN_LED_ON LOW
+#define LED_BUILTIN_ON LOW
 #define BAT_SIGNAL_PIN D6
-#define BAT_SIGNAL_ON HIGH
-#define BAT_SIGNAL_OFF LOW
-#define BAT_SIGNAL_INITIAL_STATE BAT_SIGNAL_OFF
+#define BAT_SIGNAL_INITIAL_STATE LOW
 #define BAT_SIGNAL_ON_TIME_MS 2000
 #define BAT_SIGNAL_MIRROR_LED_PIN D7
 #define IM_COMING_BUTTON_PIN D4
-#define IM_COMING_LED_PIN D1
+#define IM_COMING_LED_PIN D1  // reuse the awaiting cloud connection LED, since it's idle when connection OK
 
 // FUNCTION PROTOTYPES
 void configAndInitPins();
@@ -62,10 +59,10 @@ void configAndInitPins() {
 
   // set initial pin states
   digitalWrite(AWAITING_CLOUD_CONNECT_LED_PIN, HIGH);  // intially awaiting connection
-  digitalWrite(CONNECTED_TO_CLOUD_LED_PIN, LOW);
-  digitalWrite(LED_BUILTIN, !BAT_SIGNAL_INITIAL_STATE);    // toggle the built-in led along with the bat signal, for debugging
-  digitalWrite(BAT_SIGNAL_PIN, BAT_SIGNAL_INITIAL_STATE);  // relay on = HIGH voltage, built-in LED on = LOW
-  digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, LOW);
+  // digitalWrite(CONNECTED_TO_CLOUD_LED_PIN, LOW);
+  // digitalWrite(LED_BUILTIN, !LED_BUILTIN_ON);              // toggle the built-in led along with the bat signal, for debugging
+  // digitalWrite(BAT_SIGNAL_PIN, BAT_SIGNAL_INITIAL_STATE);  // relay on = HIGH voltage, built-in LED on = LOW
+  // digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, LOW);
 }
 
 // INTERRUPT SERVICE ROUTINE (ISR)
@@ -103,17 +100,17 @@ void onCloudDisconnect() {
 void turnOnBatSignal() {
   Serial.printf("TURN ON BAT SIGNAL FOR %d SECONDS\n", BAT_SIGNAL_ON_TIME_MS / 1000);
   bat_signal = true;
-  digitalWrite(BAT_SIGNAL_PIN, BAT_SIGNAL_ON);
-  digitalWrite(LED_BUILTIN, BUILTIN_LED_ON);
+  digitalWrite(LED_BUILTIN, LED_BUILTIN_ON);
   digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, HIGH);
+  digitalWrite(BAT_SIGNAL_PIN, HIGH);
 }
 
 void turnOffBatSignal() {
   Serial.println("TURN OFF BAT SIGNAL");
   bat_signal = false;  // cloud lib handles syncing this with the cloud
-  digitalWrite(BAT_SIGNAL_PIN, !BAT_SIGNAL_ON);
-  digitalWrite(LED_BUILTIN, !BUILTIN_LED_ON);
+  digitalWrite(LED_BUILTIN, !LED_BUILTIN_ON);
   digitalWrite(BAT_SIGNAL_MIRROR_LED_PIN, LOW);
+  digitalWrite(BAT_SIGNAL_PIN, LOW);
 }
 
 /* Responds to Arduino Cloud dashboard toggle switch. */
