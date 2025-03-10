@@ -1,3 +1,5 @@
+# TROUBLESHOOTING
+
 #### Problem:
 - Connection to MCU board unreliable, failing when using cloud editor to UPLOAD
 	- After Agent Install

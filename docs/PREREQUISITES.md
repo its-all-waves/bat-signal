@@ -1,3 +1,5 @@
+# PREREQUISITES
+
 ## Concepts & Glossary
 - Digital information is just 0 and 1 -- on / off, true / false, HIGH / LOW
     - HIGH / LOW - put simply, on / off. Is there a voltage or not.
