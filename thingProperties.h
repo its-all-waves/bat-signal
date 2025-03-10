@@ -8,8 +8,9 @@ void onCloudConnect();
 void onCloudSync();
 void onCloudDisconnect();
 void onToggleBatSignal();
-
-bool bat_signal;
+void onToggleImComing();
+bool bat_signal = false;
+bool im_coming = false;
 
 void initThingProperties() {
   ArduinoCloud.setBoardId(DEVICE_ID);
@@ -17,6 +18,7 @@ void initThingProperties() {
 
   // allow this Thing to read and write updates to the `bat_signal` bool in the Cloud
   ArduinoCloud.addProperty(bat_signal, Permission::ReadWrite).onUpdate(onToggleBatSignal);
+  ArduinoCloud.addProperty(im_coming, Permission::Read).onUpdate(onToggleImComing);
 
   ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, onCloudConnect);
   ArduinoCloud.addCallback(ArduinoIoTCloudEvent::SYNC, onCloudSync);
