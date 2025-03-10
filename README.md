@@ -39,8 +39,6 @@
 		1. This will be a BOOLEAN VARIABLE in your CODE
 	2. LEAVE EVERYTHING DEFAULT*
 	3. -> CLICK "Add Variable" BUTTON
-## Code (Sketch)
-1. `.ino` is your `Main` program file
 ## Install Agent
 1. -> NAVIGATE BACK TO YOUR WEB BROWSER
 2. -> DOWNLOAD cloud.arduino.cc/download-agent
