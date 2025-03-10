@@ -1,7 +1,5 @@
 #include <ArduinoIoTCloud.h>
-#include "ArduinoIoTCloudTCP.h"
 #include <Arduino_ConnectionHandler.h>
-#include "WiFiConnectionHandler.h"
 #include "secrets.h"
 
 void onCloudConnect();
