@@ -65,6 +65,7 @@
 ## MCU BOARD PLACEMENT
 
 - PUT THE MCU BOARD ON THE BREADBOARD WITH THE USB ALIGNED WITH THE SIDE OF THE BREADBOARD WHERE THE BREADBOARD NUMBERS ARE THE HIGHEST
+	- make it look like this: 
 
   <img title="1.1" alt="Attach the mcu board to the breadboard" src="../../.images/1.1.jpeg" width="400">
 
