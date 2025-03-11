@@ -30,7 +30,7 @@ HARDWARE SPECS:
 ### CONNECT 9V BATTERY TO THE POWER SUPPLY
 - connect the battery to battery adapter
 - connect power supply to battery via battery adapter
-- (double check +/- going into relay correctly)
+    - double check `+/-` going into relay correctly
 - press physical button located on the power supply to turn on
 - confirm you hear a clicking sound
 
