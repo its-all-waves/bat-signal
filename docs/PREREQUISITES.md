@@ -1,17 +1,21 @@
 # PREREQUISITES
 
+> _If you just go connecting random things you are going to blow up your kit!_ :(  Don't do dat.
+
 ## Concepts & Glossary
-- Digital information is just 0 and 1 -- on / off, true / false, HIGH / LOW
-    - HIGH / LOW - put simply, on / off. Is there a voltage or not.
-- Voltage is provided by a source. Current is demanded by the load.
-- LEDs and push buttons MUST be used with a resistor in series, else you're shorting the voltage / power supply to ground. 
-    - For LEDs, the amount of resistance chosen determines the current (and power) that passes thru the LED.
-    - For push buttons, we would ideally have zero current, as we just need to detect a change in voltage.
+- Digital information is just 0 and 1
+    - `on / off`, `true / false`, `HIGH / LOW`
+    - `HIGH / LOW` - put simply, is there a voltage or not.
+- `Voltage`, the “pressure” that pushes electricity, is provided by a source.
+- `Current`, the flow of charged particles through an electrical conductor, is demanded by the `load` (the amount of electricity used by a device or circuit).
+- A `resistor` is a component that limits the flow of electric current.
+    - LEDs and push buttons MUST be used with a `resistor` in series, else you're shorting the voltage / power supply to ground.
+        - For LEDs, the amount of resistance chosen determines the current (and power) that passes thru the LED.
+        - For push buttons, we would ideally have zero current, as we just need to detect a change in voltage.
 - Arduino is (basically) C++
-- _If you just go connecting random things you are going to blow up your kit!_ :(
 - Make sure +/- on power supply aligns with +/- on bread board
-- + is RED
-- - is BLUE
+- `+` is RED
+- `-` is BLUE
 
 ## Cheatsheet
 ```cpp
