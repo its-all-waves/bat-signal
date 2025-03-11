@@ -17,7 +17,7 @@
 - `+` is RED
 - `-` is BLUE
 
-[FIRST MILESTONE](./1-MILESTONE.md)
+[FIRST MILESTONE](./milestones/1-MILESTONE.md)
 
 ## Cheatsheet
 ```cpp
