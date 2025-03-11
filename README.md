@@ -1,4 +1,3 @@
-
 # Ding Dong Micro Hack
 
 ## The problem
