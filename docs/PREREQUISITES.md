@@ -17,6 +17,8 @@
 - `+` is RED
 - `-` is BLUE
 
+[FIRST MILESTONE](./1-MILESTONE.md)
+
 ## Cheatsheet
 ```cpp
 //============== PREPROCESSOR MACROS ==============
