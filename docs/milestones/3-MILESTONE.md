@@ -20,7 +20,7 @@ HARDWARE SPECS:
 	- connect LED's short side to ground power rail
 	- connect group power rail to ground via connecting wire
 
-	<img title="3.1" alt="LED pins" src="../../.images/3.1.jpeg" width="400">
+<img title="3.1" alt="LED pins" src="../../.images/3.1.jpeg" width="400">
 
 ### CONNECT POWER AND RESISTOR TO LED
 - the LED cannot regulate current on its own, so we use a resistor to lower the current

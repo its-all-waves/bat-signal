@@ -14,7 +14,7 @@ HARDWARE SPECS:
 
 ### ATTACH POWER SUPPLY
 
-    <img title="4.1" alt="Attach power supply" src="../../.images/4.1.jpeg" width="400">
+<img title="4.1" alt="Attach power supply" src="../../.images/4.1.jpeg" width="400">
 
 <br>
 
@@ -23,7 +23,7 @@ HARDWARE SPECS:
 - connect breadboard-positive to relay-vcc
 - connect data pin (d6) into relay-in
 
-    <img title="4.2" alt="Connect relay to board" src="../../.images/4.2.jpeg" width="400">
+<img title="4.2" alt="Connect relay to board" src="../../.images/4.2.jpeg" width="400">
 
 <br>
 
