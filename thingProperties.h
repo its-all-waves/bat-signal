@@ -16,7 +16,7 @@ void initThingProperties() {
 
   // allow this Thing to read and write updates to the `bat_signal` bool in the Cloud
   ArduinoCloud.addProperty(bat_signal, Permission::ReadWrite).onUpdate(onToggleBatSignal);
-  ArduinoCloud.addProperty(im_coming, Permission::Read).onUpdate(onToggleImComing);
+  ArduinoCloud.addProperty(im_coming, Permission::Read);
 
   ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, onCloudConnect);
   ArduinoCloud.addCallback(ArduinoIoTCloudEvent::SYNC, onCloudSync);
