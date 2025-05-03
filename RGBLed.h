@@ -33,28 +33,32 @@ RGBValue rgbLedColors[TOTAL_COLORS] = {
 };
 
 struct RGBLedFade {
-  uint8_t stepCount = 100;
-  uint16_t durationMs = 2000;
-  uint16_t stepIntervalMs = durationMs / stepCount;
+  uint8_t stepCount;
+  uint16_t durationMs;
+  uint16_t stepIntervalMs;  // durationMs / stepCount;
   uint8_t stepIndex = 0;
   float rgbDelta[RGB] = { 0 };
 
-  bool isCycle = true;
+  bool isCycle;
   int8_t cyclePhase = 0;
   uint32_t stepStartTime = 0;
   uint8_t stepNumber = 0;
-  uint8_t startColor = 0;
-  uint8_t endColor = 0;
+  uint8_t startColor;
+  uint8_t endColor;
 
   RGBLedFade(
     uint8_t startColor = 0,
     uint8_t endColor = 1,
+    bool isCycle = false,
     uint16_t durationMs = 2000,
-    bool isCycle = false)
+    uint8_t stepCount = 100)
     : startColor(startColor),
       endColor(endColor),
+      isCycle(isCycle),
       durationMs(durationMs),
-      isCycle(isCycle) {}
+      stepCount(stepCount) {
+    stepIntervalMs = durationMs / stepCount;
+  }
 
   bool isStepComplete(uint32_t now) {
     return now - stepStartTime >= stepIntervalMs;
@@ -175,4 +179,4 @@ private:
   }
 };
 
-#endif // RGBLED_H
+#endif  // RGBLED_H

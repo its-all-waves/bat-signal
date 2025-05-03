@@ -27,13 +27,14 @@ TODO:
 
 // TIMING SETTINGS
 
-#define SECOND 1000
+#define SECOND *1000
 
-#define BAT_SIGNAL_TIMEOUT_MS 30 * SECOND
-#define IM_COMING_TIMEOUT_MS 2 * SECOND
+#define BAT_SIGNAL_TIMEOUT_MS 30 SECOND
+#define IM_COMING_TIMEOUT_MS 2 SECOND  // 30 seconds ideal
 
-#define DISCONNECTED_LED_FADE_DUR_MS 2 * SECOND
-#define CONNECTED_LED_FADE_DUR_MS 2 * SECOND
+#define DISCONNECTED_LED_FADE_DUR_MS 1 SECOND
+#define CONNECTED_LED_FADE_DUR_MS 3 SECOND
+#define BAT_SIGNAL_LED_FADE_DUR_MS 0
 
 // PROTOTYPES
 
@@ -71,15 +72,16 @@ void configurePins() {
 // LED
 
 RGBLed led = RGBLed(RED_LED_PIN, GREEN_LED_PIN, BLUE_LED_PIN);
-RGBLedFade disconnectedFade = RGBLedFade(LED_OFF, YELLOW, DISCONNECTED_LED_FADE_DUR_MS, true);
-RGBLedFade connectedFade = RGBLedFade(LED_OFF, GREEN, CONNECTED_LED_FADE_DUR_MS, true);
+RGBLedFade disconnectedFade = RGBLedFade(LED_OFF, YELLOW, true, DISCONNECTED_LED_FADE_DUR_MS);
+RGBLedFade connectedFade = RGBLedFade(LED_OFF, GREEN, true, CONNECTED_LED_FADE_DUR_MS);
+RGBLedFade batSignalFade = RGBLedFade(CYAN, MAGENTA, true, BAT_SIGNAL_LED_FADE_DUR_MS, 30);
 
 void disconnectedFromCloudLedOn() {
   led.setFade(&disconnectedFade);
 }
 
 void connectedToCloudLedOn() {
-  led.emit(GREEN);
+  led.setFade(&connectedFade);
 }
 
 void builtInLedOn() {
@@ -88,7 +90,7 @@ void builtInLedOn() {
 
 void batSignalLedOn() {
   builtInLedOn();  // built-in LED also mirrors bat signal
-  led.emit(BLUE);
+  led.setFade(&batSignalFade);
 }
 
 void imComingLedOn() {
@@ -189,7 +191,6 @@ void transitionState() {
   Serial.printf("STATE: %d -> %d :: EVENT: %d\n", state, nextState, event);
   state = nextState;
 }
-
 
 // LOCAL EVENT EMITTERS
 
