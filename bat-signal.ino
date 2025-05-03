@@ -16,7 +16,7 @@ TODO:
 #include "thingProperties.h"
 #include "RGBLed.h"
 
-// PIN SETTINGS
+// PIN ASSIGNMENTS
 
 #define RED_LED_PIN D1  // single RGB LED
 #define GREEN_LED_PIN D2
@@ -33,7 +33,7 @@ TODO:
 #define IM_COMING_TIMEOUT_MS 2 * SECOND
 
 #define DISCONNECTED_LED_FADE_DUR_MS 2 * SECOND
-#define CONNECTED_LED_FADE_DUR_MS 5 * SECOND
+#define CONNECTED_LED_FADE_DUR_MS 2 * SECOND
 
 // PROTOTYPES
 
@@ -75,7 +75,7 @@ RGBLedFade disconnectedFade = RGBLedFade(LED_OFF, YELLOW, DISCONNECTED_LED_FADE_
 RGBLedFade connectedFade = RGBLedFade(LED_OFF, GREEN, CONNECTED_LED_FADE_DUR_MS, true);
 
 void disconnectedFromCloudLedOn() {
-  led.emit(YELLOW);
+  led.setFade(&disconnectedFade);
 }
 
 void connectedToCloudLedOn() {
@@ -213,7 +213,7 @@ void dispatchTimedEvents() {
   }
 }
 
-// CLOUD EVENT HANDLERS && LOCAL EVENT EMITTERS
+// CLOUD EVENT HANDLERS WITH LOCAL EVENT EMITTERS
 
 void onCloudConnect() {
   Serial.println("CLOUD CONNECTED");
@@ -232,32 +232,33 @@ void onCloudDisconnect() {
 /* Responds to Arduino Cloud dashboard toggle switch. */
 void onCloudToggleBatSignal() {
   Serial.printf("CLOUD CHANGED `bat_signal` TO: %s\n", bat_signal ? "true" : "false");
-  if (!bat_signal) return;  // only respond when bat_signal changes false -> true
+  if (!bat_signal) return;
   event = RECEIVED_BAT_SIGNAL;
 }
 
 // PROGRAM
 
+void update() {
+  ArduinoCloud.update();
+  led.updateFade();
+}
+
 void setup() {
   Serial.begin(9600);
   delay(1500);  // wait for a Serial Monitor w/o blocking if not found
-
   configurePins();
   disconnectedFromCloudLedOn();
   setDebugMessageLevel(DBG_INFO);
-
   initThingProperties();
   ArduinoCloud.begin(ArduinoIoTPreferredConnection);
   ArduinoCloud.printDebugInfo();
 }
 
 void loop() {
-  ArduinoCloud.update();
-
+  update();
   if (event != NO_EVENT) {
     transitionState();
     event = NO_EVENT;
   }
-
   dispatchTimedEvents();
 }

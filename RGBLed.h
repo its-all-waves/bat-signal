@@ -89,6 +89,7 @@ public:
   float rgb[RGB] = { 0 };
 
   void emit(uint8_t color) {
+    clearFade();
     setRgb(rgbLedColors[color]);
     for (uint8_t i = 0; i < RGB; i++) {
       digitalWrite(pins[i], rgbLedColors[color][i]);
@@ -106,7 +107,7 @@ public:
     analogWriteToPins(rgb);
   }
 
-  RGBLedFade fade;
+  RGBLedFade* fade = nullptr;
 
   /** 
   To be used with `updateFade()`. Configures the fade that `updateFade()` 
@@ -114,30 +115,35 @@ public:
   NOTE: Currently, the fading only works with the predefined `colors`.
   */
   // void setFade(uint8_t startColor, uint8_t endColor, uint16_t durationMs, bool isCycle) {
-  void setFade(RGBLedFade f) {
+  void setFade(RGBLedFade* f) {
     fade = f;
-    setRgb(rgbLedColors[fade.startColor]);
-    fade.setFadeDelta(rgbLedColors);
+    setRgb(rgbLedColors[fade->startColor]);
+    fade->setFadeDelta(rgbLedColors);
+  }
+
+  void clearFade() {
+    fade = nullptr;
   }
 
   void updateFade() {
+    if (!fade) return;
     const uint32_t now = millis();
-    if (!fade.isStepComplete(now)) return;
+    if (!fade->isStepComplete(now)) return;
     // completed a step
-    if (fade.isCycle && fade.isFadeComplete()) {
+    if (fade->isCycle && fade->isFadeComplete()) {
       // this step completes a fade (or a 1/2 cycle, if the fade is set to cycle)
       // reverse the fade
-      uint8_t tmp = fade.startColor;
-      fade.startColor = fade.endColor;
-      fade.endColor = tmp;
-      setRgb(rgbLedColors[fade.startColor]);
-      fade.setFadeDelta(rgbLedColors);
-      fade.cyclePhase = !fade.cyclePhase;
-      fade.stepNumber = 0;
+      uint8_t tmp = fade->startColor;
+      fade->startColor = fade->endColor;
+      fade->endColor = tmp;
+      setRgb(rgbLedColors[fade->startColor]);
+      fade->setFadeDelta(rgbLedColors);
+      fade->cyclePhase = !fade->cyclePhase;
+      fade->stepNumber = 0;
     } else {
-      fade.stepNumber++;
+      fade->stepNumber++;
     }
-    fade.stepStartTime = now;
+    fade->stepStartTime = now;
     update();
   }
 
@@ -148,7 +154,7 @@ private:
   the updated value to the LED pins.
   */
   void update() {
-    for (uint8_t i = 0; i < RGB; i++) rgb[i] += fade.rgbDelta[i];
+    for (uint8_t i = 0; i < RGB; i++) rgb[i] += fade->rgbDelta[i];
     analogWriteToPins(rgb);
   }
 
