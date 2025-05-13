@@ -20,7 +20,7 @@ TODO:
 
 #define RED_LED_PIN D1  // single RGB LED
 #define GREEN_LED_PIN D2
-#define BLUE_LED_PIN D7
+#define BLUE_LED_PIN D3
 
 #define BAT_SIGNAL_RELAY_PIN D6
 #define IM_COMING_BUTTON_PIN D4
