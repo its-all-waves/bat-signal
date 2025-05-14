@@ -36,11 +36,10 @@ struct RGBLedFade {
   uint8_t stepCount;
   uint16_t durationMs;
   uint16_t stepIntervalMs;  // durationMs / stepCount;
-  uint8_t stepIndex = 0;
   float rgbDelta[RGB] = { 0 };
   bool isCycle;
   uint32_t stepStartTime = 0;
-  uint8_t stepNumber = 0;
+  uint8_t stepIndex = 0;
   uint8_t startColor;
   uint8_t endColor;
 
@@ -58,12 +57,17 @@ struct RGBLedFade {
     stepIntervalMs = durationMs / stepCount;
   }
 
-  bool isStepComplete(uint32_t now) {
-    return now - stepStartTime >= stepIntervalMs;
+  void incrementStep() {
+    stepStartTime = millis();
+    stepIndex++;
+  }
+
+  bool isStepComplete() {
+    return millis() - stepStartTime >= stepIntervalMs;
   }
 
   bool isComplete() {
-    return stepNumber == stepCount;
+    return stepIndex == stepCount;
   }
 
   void setDelta(RGBValue colors[TOTAL_COLORS]) {
@@ -71,6 +75,14 @@ struct RGBLedFade {
     for (uint8_t i = 0; i < RGB; i++) {
       rgbDelta[i] = (colors[endColor][i] - colors[startColor][i]) / (float)stepCount;
     }
+  }
+
+  void setNextCyclePhase() {
+    uint8_t oldStartColor = startColor;
+    startColor = endColor;
+    endColor = oldStartColor;
+    setDelta(rgbLedColors);
+    stepIndex = 0;
   }
 };
 
@@ -130,40 +142,20 @@ public:
 
   void updateFade() {
     if (!fade) return;
-    const uint32_t now = millis();
-    if (!fade->isStepComplete(now)) return;
-    // completed a step
-    if (fade->isCycle && fade->isComplete()) {
-      // this step completes a fade (or a 1/2 cycle, if the fade is set to cycle)
-      // reverse the fade
+    if (!fade->isStepComplete()) return;
 
-      // // DEBUG PRINT -- ENABLING THESE SLOOOOWS DOWN THE PROGRAM
-      // for (int i = 0; i < RGB; i++) {
-      //   Serial.println("BEFORE");
-      //   Serial.printf("R:  %d  |  ", lround(rgb[R]));
-      //   Serial.printf("G:  %d  |  ", lround(rgb[G]));
-      //   Serial.printf("B:  %d\n", lround(rgb[B]));
-      // }
+    fade->incrementStep();
 
-      uint8_t startColor = fade->startColor;
-      fade->startColor = fade->endColor;
-      fade->endColor = startColor;
-      setRgb(rgbLedColors[fade->startColor]);
-      fade->setDelta(rgbLedColors);
-      fade->stepNumber = 0;
-
-      // // DEBUG PRINT
-      // for (int i = 0; i < RGB; i++) {
-      //   Serial.println("AFTER");
-      //   Serial.printf("R:  %d  |  ", lround(rgb[R]));
-      //   Serial.printf("G:  %d  |  ", lround(rgb[G]));
-      //   Serial.printf("B:  %d\n", lround(rgb[B]));
-      // }
-
-    } else {
-      fade->stepNumber++;
+    if (!fade->isComplete()) {
+      update();
+      return;
     }
-    fade->stepStartTime = now;
+
+    if (fade->isCycle) {
+      fade->setNextCyclePhase();
+      setRgb(rgbLedColors[fade->startColor]);
+    }
+
     update();
   }
 

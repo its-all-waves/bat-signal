@@ -27,14 +27,17 @@ TODO:
 
 // TIMING SETTINGS
 
-#define SECOND *1000
+#define THOUSAND *1e3
 
-#define BAT_SIGNAL_TIMEOUT_MS 30 SECOND
-#define IM_COMING_TIMEOUT_MS 30 SECOND  // 30 seconds ideal
+#define BAT_SIGNAL_TIMEOUT_MS 30 THOUSAND
+#define IM_COMING_TIMEOUT_MS 30 THOUSAND
 
-#define DISCONNECTED_LED_FADE_DUR_MS 1 SECOND
-#define CONNECTED_LED_FADE_DUR_MS 3 SECOND
+#define DISCONNECTED_LED_FADE_DUR_MS 1 THOUSAND
+#define CONNECTED_LED_FADE_DUR_MS 3 THOUSAND
 #define BAT_SIGNAL_LED_FADE_DUR_MS 0
+
+#define MILLION *1e6
+#define BUTTON_DEBOUNCE_TIME_US 300 THOUSAND
 
 // PROTOTYPES
 
@@ -99,12 +102,12 @@ void imComingLedOn() {
 
 // BAT SIGNAL RELAY
 
-void batSignalOn() {
+void batSignalRelayOn() {
   Serial.println("TURN ON BAT SIGNAL");
   digitalWrite(BAT_SIGNAL_RELAY_PIN, HIGH);
 }
 
-void batSignalOff() {
+void batSignalRelayOff() {
   Serial.println("TURN OFF BAT SIGNAL");
   digitalWrite(BAT_SIGNAL_RELAY_PIN, LOW);
 }
@@ -122,7 +125,7 @@ void zeroOutState() {
   im_coming = false;
   batSignalReceivedTimeMs = 0;
   imComingButtonPressedTimeMs = 0;
-  batSignalOff();
+  batSignalRelayOff();
 }
 
 State setStateIdleConnected() {
@@ -139,7 +142,7 @@ State setStateDisconnected() {
 
 State setStateBatSignalOn() {
   batSignalReceivedTimeMs = millis();
-  batSignalOn();
+  batSignalRelayOn();
   batSignalLedOn();
   return BAT_SIGNAL_ON;
 }
@@ -147,6 +150,7 @@ State setStateBatSignalOn() {
 State setStateImComing() {
   imComingButtonPressedTimeMs = millis();
   bat_signal = false;
+  batSignalRelayOff();
   im_coming = true;
   imComingLedOn();
   return IM_COMING;
@@ -183,7 +187,8 @@ void transitionState() {
       }
       break;
     case IM_COMING:
-      if (event == IM_COMING_TIMED_OUT) {
+      // Note: a 2nd button press gets us back to idle and listening for bat signals
+      if (event == IM_COMING_TIMED_OUT || event == PRESSED_IM_COMING_BUTTON) {
         nextState = setStateIdleConnected();
       }
       break;
@@ -193,10 +198,15 @@ void transitionState() {
 }
 
 // LOCAL EVENT EMITTERS
+uint32_t lastButtonPressTimeUs = micros();
 
 // IRAM_ATTR: see https://arduino-esp8266.readthedocs.io/en/latest/reference.html#interrupts
 void IRAM_ATTR imComingButtonInterrupt() {
-  event = PRESSED_IM_COMING_BUTTON;
+  uint32_t now = micros();
+  if (now - lastButtonPressTimeUs > BUTTON_DEBOUNCE_TIME_US) {
+    event = PRESSED_IM_COMING_BUTTON;
+  }
+  lastButtonPressTimeUs = now;
 }
 
 void dispatchTimedEvents() {
@@ -239,11 +249,6 @@ void onCloudToggleBatSignal() {
 
 // PROGRAM
 
-void update() {
-  ArduinoCloud.update();
-  led.updateFade();
-}
-
 void setup() {
   Serial.begin(9600);
   delay(1500);  // wait for a Serial Monitor w/o blocking if not found
@@ -255,9 +260,14 @@ void setup() {
   ArduinoCloud.printDebugInfo();
 }
 
+void update() {
+  ArduinoCloud.update();
+  led.updateFade();
+}
+
 void loop() {
   update();
-  if (event != NO_EVENT) {
+  if (event) {
     transitionState();
     event = NO_EVENT;
   }
