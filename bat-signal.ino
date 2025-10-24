@@ -1,16 +1,5 @@
 /*
 Board: NodeMCU 1.0 (ESP-12E) ESP8266
-
-TODO:
-  - [ ] Block bat signal while in IM_COMING state
-  - [ ] Make the LED more dyanmic
-  - [x] Implement a state machine
-  - [x] Swap 3 LEDs for single RGB LED
-   - [x] LED lights indicating cloud connection status
-        - [x] YELLOW for awaiting connection
-        - [x] GREEN indicating connection established
-    - [x] External reset button
-    - [x] External LED to mirror bat_signal_on (allows device user to see if cloud connection OK without lamp attached) 
 */
 
 #include "thingProperties.h"
@@ -36,7 +25,6 @@ TODO:
 #define CONNECTED_LED_FADE_DUR_MS 3 THOUSAND
 #define BAT_SIGNAL_LED_FADE_DUR_MS 0
 
-#define MILLION *1e6
 #define BUTTON_DEBOUNCE_TIME_US 300 THOUSAND
 
 // PROTOTYPES
@@ -62,7 +50,7 @@ enum Event {
   BAT_SIGNAL_TIMED_OUT,      // 6
 };
 
-// DEFINITIONS...
+// DEFINITIONS
 
 void configurePins() {
   // NOTE: LED pins are configured by RGBLed class
@@ -198,6 +186,7 @@ void transitionState() {
 }
 
 // LOCAL EVENT EMITTERS
+
 uint32_t lastButtonPressTimeUs = micros();
 
 // IRAM_ATTR: see https://arduino-esp8266.readthedocs.io/en/latest/reference.html#interrupts
